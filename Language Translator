@@ -44,10 +44,10 @@ AWS Secret Access Key [None]: *********************************
 Default region name [None]: us-east-1
 Default output format [None]: json
 
-This file should contain your AWS configuration settings, including the profile you created.
 
 
-                                                           Language Translator Code
+
+          Language Translator Code
 
 
 root=tk.Tk()
