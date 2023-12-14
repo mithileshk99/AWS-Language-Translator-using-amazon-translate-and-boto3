@@ -1,0 +1,72 @@
+Language Translator using Amazon translate and Boto3
+
+1.Open windows powershell
+  check python --version
+         &
+2. pip3 --version
+    if not install then type
+   pip3 install boto3
+3. pip install awscli
+4. aws configure --profile demo_user
+5. cd .aws
+6. \.aws> dir
+7. \.aws> type config 
+8. \.aws> type credentials
+
+Step-by-Step Configuration of Boto3 with AWS CLI on Windows PowerShell:
+1.	Open Windows PowerShell:
+•	Open Windows PowerShell from the Start menu or search bar.
+2.	Check Python Version:
+Code - python --version 
+3.	Check pip3 Version:
+Code - pip3 --version 
+If pip3 is not installed, you can install it using:
+ Code - pip3 install boto3 
+4.	Install AWS CLI:
+Code - pip install awscli 
+5.	Configure AWS CLI with a Profile:
+Code - aws configure --profile demo_user
+PS C:\Users\mithi> aws configure --profile demo_user
+AWS Access Key ID [None]: 
+AWS Secret Access Key [None]: 
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+This command will prompt you to enter your AWS Access Key ID, Secret Access Key, default region name, and output format.
+6.	Navigate to the AWS Configuration Folder:
+Code - cd $env:USERPROFILE\.aws 
+7.	List Contents of the AWS Folder:
+Code - dir 
+8.	View the Config File:
+Code - PS C:\Users\mithi> aws configure --profile demo_user
+AWS Access Key ID [None]: *************************
+AWS Secret Access Key [None]: *********************************
+Default region name [None]: us-east-1
+Default output format [None]: json
+
+This file should contain your AWS configuration settings, including the profile you created.
+
+
+                                                           Language Translator Code
+
+
+root=tk.Tk()
+root.geometry("400x240")
+root.title("AWS Translator")
+textExample=tk.Text(root,height=10)
+textExample.pack()
+def getText():
+    aws_mag_con=boto3.session.Session(profile_name='Mithilesh_kumar')
+    client=aws_mag_con.client(service_name='translate',region_name='us-east-1')
+    result=textExample.get("1,0","end")
+    print(result)
+    response=client.translate_text(Text=result,SourcelanguageCode='en',
+    TargetLanguageCode='hi')
+    print('Translated Text:'+ response.get('TranslatedText'))
+    print("Source Language Code: " + response.get('SourceLanguageCode'))
+    print("Target Language Code: " + response.get('TargetlanguageCode'))
+btnRead=tk.Button(root,height=1,width=10,text="Read",command=getText)
+btnRead.pack()
+
+
+   
